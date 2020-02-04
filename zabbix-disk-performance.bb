@@ -5,14 +5,17 @@ SRC_URI = " \
 	  file://lld-disks.py \
           file://userparameter_diskstats.conf \
 "
+RDEPENDS_${PN} = "python"
 DEPENDS = "zabbix"
 
 do_install_append() {
-  install -m 0700 -d ${D}${sysconfdir}/zabbix_agentd.conf.d
+  install -d ${D}${sysconfdir}/zabbix_agentd.conf.d
   install -m 0644 ${WORKDIR}/userparameter_diskstats.conf ${D}${sysconfdir}/zabbix_agentd.conf.d/userparameter_diskstats.conf
   
-  install -m 0755 -d ${D}{bindir}
-  install -m 0644 ${bindir}/lld-disks.py  
+  install -m 0755 -d ${D}${bindir}
+  install -m 0755 ${WORKDIR}/lld-disks.py ${D}${bindir}/lld-disks.py 
+  #cd ${D}/
+  #ln -s ${D}${bindir} ${D}/usr/local/bin 
 }
 
 FILES_${PN} = " \
