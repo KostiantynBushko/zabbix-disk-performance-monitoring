@@ -1,0 +1,7 @@
+zabbix-disk-performance-monitoring
+
+----
+git clone --recursive git@github.com:KostiantynBushko/zabbix-disk-performance-monitoring.git
+cd zabbix-disk-performance-monitoring/
+git submodule update --init --recursive
+----
